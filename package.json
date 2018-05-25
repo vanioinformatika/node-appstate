@@ -1,0 +1,49 @@
+{
+  "name": "appstate",
+  "version": "1.0.0",
+  "description": "Application state handler",
+  "main": "appState.js",
+  "scripts": {
+    "test": "NODE_ENV=test LOG_LEVEL=warn mocha --exit ./appState.spec.js",
+    "security": "snyk test",
+    "format": "standard appState.*",
+    "coverage": "nyc --reporter=lcov npm test",
+    "preversion": "npm run format && npm run security && npm test",
+    "version": "",
+    "postversion": "git push && git push --tags"
+  },
+  "devDependencies": {
+    "mocha": "^5.2.0",
+    "nyc": "^11.8.0",
+    "should": "^13.2.1",
+    "should-sinon": "0.0.6",
+    "sinon": "^5.0.10",
+    "snyk": "^1.80.1",
+    "standard": "^11.0.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vanioinformatika/node-appstate.git"
+  },
+  "engines": {
+    "node": ">=8.0.0"
+  },
+  "keywords": [
+    "application",
+    "state",
+    "nodejs",
+    "node"
+  ],
+  "author": "Istvan Pato <istvan.pato@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vanioinformatika/node-appstate/issues"
+  },
+  "homepage": "https://github.com/vanioinformatika/node-appstate#readme",
+  "nyc": {
+    "exclude": [
+      "**/*.spec.js",
+      "node_modules"
+    ]
+  }
+}
