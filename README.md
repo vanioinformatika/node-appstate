@@ -4,7 +4,9 @@
 
 Application state handler without dependency
 
-Initializaion without callback (logger):
+---
+
+Initialization without callback (logger):
 
 ```javascript
 const appState = require('./appState')()
