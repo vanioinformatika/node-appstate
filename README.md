@@ -43,7 +43,14 @@ appState.error()
 appState.stopped()
 ```
 
-**Application state values: INIT, ERROR, RUNNING, STOPPED**
+Reading application state.
+
+```javascript
+const appState = require('./appState')()
+let appState = appState.get()
+```
+
+**Application state values are 'INIT', 'ERROR', 'RUNNING', 'STOPPED'**
 
 ## Best practice
 
