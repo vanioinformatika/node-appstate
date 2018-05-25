@@ -6,6 +6,8 @@ Application state handler without dependency
 
 ---
 
+```npm i @vanioinformatika/appstate```
+
 Initialization without callback (logger):
 
 ```javascript
