@@ -47,7 +47,7 @@ Reading application state.
 
 ```javascript
 const appState = require('./appState')()
-let appState = appState.get()
+let applicationState = appState.get()
 ```
 
 **Application state values are 'INIT', 'ERROR', 'RUNNING', 'STOPPED'**
