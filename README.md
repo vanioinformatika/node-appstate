@@ -56,10 +56,10 @@ let applicationState = appState.get()
 
 Using state:
 
-* RUNNING - application is running
-* STOPPED - application is running, but programmatically stopped
-* ERROR - application is running, but has a critical error (e.g.: DB connection error): app doesn't serves requests
-* INIT - application is starting, initialization: starting phase (app doesn't handle request)
+* **RUNNING** - application is running
+* **STOPPED** - application is running, but programmatically stopped
+* **ERROR** - application is running, but has a critical error (e.g.: DB connection error): app doesn't serves requests
+* **INIT** - Default state, application is starting, initialization: starting phase (app doesn't handle request)
 
 Use a /health endpoint for load-balancers, and set to UP, if ```appState.get() === 'RUNNING'```, else DOWN.
 
