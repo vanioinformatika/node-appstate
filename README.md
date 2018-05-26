@@ -11,7 +11,7 @@ Application state handler without dependency
 Initialization without callback (logger):
 
 ```javascript
-const appState = require('./appState')()
+const appState = require('@vanioinformatika/appstate')()
 ```
 
 Initialization with a simple logger:
