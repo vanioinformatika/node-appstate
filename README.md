@@ -17,7 +17,7 @@ const appState = require('./appState')()
 Initialization with a simple logger:
 
 ```javascript
-const appState = require('./appState')((appState, newAppState) => {
+const appState = require('@vanioinformatika/appstate')((appState, newAppState) => {
   console.log(`App state has changed from ${appState} to ${newAppState}`)
 })
 ```
@@ -32,7 +32,7 @@ You can use any logger library, for example pino.
 
 ```javascript
 let logger = require('pino')()
-const appState = require('./appState')((appState, newAppState) => {
+const appState = require('@vanioinformatika/appstate')((appState, newAppState) => {
   logger.warn(`App state has changed from ${appState} to ${newAppState}`)
 })
 ```
@@ -40,7 +40,7 @@ const appState = require('./appState')((appState, newAppState) => {
 Changing application state.
 
 ```javascript
-const appState = require('./appState')()
+const appState = require('@vanioinformatika/appstate')()
 appState.init()
 appState.running()
 appState.error()
@@ -50,7 +50,7 @@ appState.stopped()
 Reading application state.
 
 ```javascript
-const appState = require('./appState')()
+const appState = require('@vanioinformatika/appstate')()
 let applicationState = appState.get()
 ```
 
