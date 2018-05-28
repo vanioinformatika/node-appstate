@@ -1,9 +1,8 @@
-// RUNNING - application is running
-// STOPPED - application is running, but programmatically stopped
-// ERROR - application is running, but has a critical error (e.g.: DB connection error): app doesn't serves requests
-// INIT - application is starting, initialization: starting phase (app doesn't handle request)
+/**
+ * Application state handler.
+ */
 
-// start state
+// start state is INIT
 var appState = 'INIT'
 
 /**
@@ -13,6 +12,16 @@ var appState = 'INIT'
  * Tipical use case is when cb contains a logger function.
  */
 module.exports = (cb) => {
+  // RUNNING - application is running
+  // STOPPED - application is running, but programmatically stopped
+  // ERROR - application is running, but has a critical error (e.g.: DB connection error): app doesn't serves requests
+  // INIT - application is starting, initialization: starting phase (app doesn't handle request)
+  const state = {
+    INIT: 'INIT',
+    RUNNING: 'RUNNING',
+    ERROR: 'ERROR',
+    STOPPED: 'STOPPED'
+  }
   /**
    * Set application state to new state and loging it,
    * if state has changed.
@@ -27,21 +36,37 @@ module.exports = (cb) => {
 
   // changing appState
   function init () {
-    changeAppState('INIT')
+    changeAppState(state.INIT)
   }
   function running () {
-    changeAppState('RUNNING')
+    changeAppState(state.RUNNING)
   }
   function error () {
-    changeAppState('ERROR')
+    changeAppState(state.ERROR)
   }
   function stopped () {
-    changeAppState('STOPPED')
+    changeAppState(state.STOPPED)
   }
 
-  // reading appState
+  function isInit () {
+    return appState === state.INIT
+  }
+  function isRunning () {
+    return appState === state.RUNNING
+  }
+  function isError () {
+    return appState === state.ERROR
+  }
+  function isStopped () {
+    return appState === state.STOPPED
+  }
+
   function get () {
     return appState
   }
-  return {init, running, error, stopped, get}
+
+  function list () {
+    return state
+  }
+  return {init, running, error, stopped, get, list, isInit, isRunning, isError, isStopped}
 }

@@ -65,4 +65,28 @@ describe('appState', () => {
     appState.error()
     appState.get().should.be.equal('ERROR')
   })
+
+  it('isInit ok', () => {
+    const appState = require('./appState')()
+    appState.init()
+    appState.isInit().should.be.true()
+  })
+
+  it('isRunning ok', () => {
+    const appState = require('./appState')()
+    appState.running()
+    appState.isRunning().should.be.true()
+  })
+
+  it('isStopped ok', () => {
+    const appState = require('./appState')()
+    appState.stopped()
+    appState.isStopped().should.be.true()
+  })
+
+  it('isError ok', () => {
+    const appState = require('./appState')()
+    appState.error()
+    appState.isError().should.be.true()
+  })
 })
