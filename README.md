@@ -99,15 +99,15 @@ States:
 
 State machine:
 
-* INIT icon:arrow-right[] [INIT, RUNNING, STOPPED, ERROR, FATAL]
+* INIT -> [INIT, RUNNING, STOPPED, ERROR, FATAL]
 
-* RUNNING icon:arrow-right[] [INIT, RUNNING, STOPPED, ERROR, FATAL]
+* RUNNING -> [INIT, RUNNING, STOPPED, ERROR, FATAL]
 
-* STOPPED icon:arrow-right[] [INIT, RUNNING, STOPPED, ERROR, FATAL]
+* STOPPED -> [INIT, RUNNING, STOPPED, ERROR, FATAL]
 
-* ERROR icon:arrow-right[] [INIT, RUNNING, STOPPED, ERROR, FATAL]
+* ERROR -> [INIT, RUNNING, STOPPED, ERROR, FATAL]
 
-* FATAL icon:arrow-right[] [FATAL]
+* FATAL -> [FATAL]
 
 ## Best practice
 
