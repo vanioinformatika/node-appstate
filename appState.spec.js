@@ -89,4 +89,15 @@ describe('appState', () => {
     appState.error()
     appState.isError().should.be.true()
   })
+
+  it('list state values', () => {
+    const appState = require('./appState')()
+    appState.error()
+    appState.list().should.be.eql({
+      INIT: 'INIT',
+      RUNNING: 'RUNNING',
+      ERROR: 'ERROR',
+      STOPPED: 'STOPPED'
+    })
+  })
 })
