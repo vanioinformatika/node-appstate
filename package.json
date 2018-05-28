@@ -1,6 +1,6 @@
 {
   "name": "@vanioinformatika/appstate",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "Application state handler",
   "main": "appState.js",
   "scripts": {
