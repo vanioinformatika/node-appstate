@@ -1,3 +1,4 @@
+const debug = require('debug')('appState')
 /**
  * Application state handler.
  */
@@ -19,8 +20,16 @@ module.exports = (cb) => {
   const state = {
     INIT: 'INIT',
     RUNNING: 'RUNNING',
+    STOPPED: 'STOPPED',
     ERROR: 'ERROR',
-    STOPPED: 'STOPPED'
+    FATAL: 'FATAL'
+  }
+  const stateMachine = {
+    INIT: [state.INIT, state.RUNNING, state.STOPPED, state.ERROR, state.FATAL],
+    RUNNING: [state.INIT, state.RUNNING, state.STOPPED, state.ERROR, state.FATAL],
+    STOPPED: [state.INIT, state.RUNNING, state.STOPPED, state.ERROR, state.FATAL],
+    ERROR: [state.INIT, state.RUNNING, state.STOPPED, state.ERROR, state.FATAL],
+    FATAL: [state.FATAL]
   }
   /**
    * Set application state to new state and loging it,
@@ -28,9 +37,20 @@ module.exports = (cb) => {
    * @param String newAppState
    */
   function changeAppState (newAppState) {
-    if (appState !== newAppState) {
-      if (cb) cb(appState, newAppState)
-      appState = newAppState
+    if (state[newAppState]) {
+      if (stateMachine[appState].includes(newAppState)) {
+        // valid state changes
+        if (appState !== newAppState) {
+          if (cb) cb(appState, newAppState)
+          appState = newAppState
+        } else {
+          debug('info: appState has already set: ' + newAppState)
+        }
+      } else {
+        debug('warn: invalid state changes from ' + appState + ' to ' + newAppState)
+      }
+    } else {
+      debug('warn: unknow appState: ' + newAppState)
     }
   }
 
@@ -47,7 +67,9 @@ module.exports = (cb) => {
   function stopped () {
     changeAppState(state.STOPPED)
   }
-
+  function fatal () {
+    changeAppState(state.FATAL)
+  }
   function isInit () {
     return appState === state.INIT
   }
@@ -60,6 +82,13 @@ module.exports = (cb) => {
   function isStopped () {
     return appState === state.STOPPED
   }
+  function isFatal () {
+    return appState === state.FATAL
+  }
+
+  function getStateMachine () {
+    return stateMachine
+  }
 
   function get () {
     return appState
@@ -68,5 +97,25 @@ module.exports = (cb) => {
   function list () {
     return state
   }
-  return {init, running, error, stopped, get, list, isInit, isRunning, isError, isStopped}
+
+  function reset () {
+    appState = state.INIT
+  }
+
+  return {
+    init,
+    running,
+    error,
+    stopped,
+    fatal,
+    get,
+    getStateMachine,
+    list,
+    isInit,
+    isRunning,
+    isError,
+    isStopped,
+    isFatal,
+    reset
+  }
 }

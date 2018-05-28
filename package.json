@@ -4,7 +4,7 @@
   "description": "Application state handler",
   "main": "appState.js",
   "scripts": {
-    "test": "NODE_ENV=test LOG_LEVEL=warn mocha --exit ./appState.spec.js",
+    "test": "NODE_ENV=test DEBUG=appState mocha --exit ./appState.spec.js",
     "security": "snyk test",
     "format": "standard appState.*",
     "coverage": "nyc --reporter=lcov npm test",
@@ -45,5 +45,8 @@
       "**/*.spec.js",
       "node_modules"
     ]
+  },
+  "dependencies": {
+    "debug": "^3.1.0"
   }
 }
