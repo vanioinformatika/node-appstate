@@ -1,3 +1,8 @@
+declare interface StateHandler {
+  (appState: string, newAppState: string): void
+} 
+declare function appState(stateHandler: StateHandler): void
+
 declare namespace appState {
   // Application is under initialization.
   function init(): void

@@ -22,6 +22,8 @@ const appState = require('@vanioinformatika/appstate')((appState, newAppState) =
 })
 ```
 
+This example is always logging the application state change.
+
 You have two variables:
 
 * appState: application state
