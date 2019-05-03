@@ -42,7 +42,6 @@ declare namespace appState {
      * @deprecated use init().
      */
     reset(): void
-
   }
 
   /**
