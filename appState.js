@@ -12,7 +12,7 @@ var appState = 'INIT'
  * - newAppState: new application state
  * Tipical use case is when cb contains a logger function.
  */
-module.exports = (cb) => {
+module.exports = cb => {
   // RUNNING - application is running
   // STOPPED - application is running, but programmatically stopped
   // ERROR - application is running, but has a critical error (e.g.: DB connection error): app doesn't serves requests
@@ -22,21 +22,21 @@ module.exports = (cb) => {
     RUNNING: 'RUNNING',
     STOPPED: 'STOPPED',
     ERROR: 'ERROR',
-    FATAL: 'FATAL'
+    FATAL: 'FATAL',
   }
   const stateMachine = {
     INIT: [state.INIT, state.RUNNING, state.STOPPED, state.ERROR, state.FATAL],
     RUNNING: [state.INIT, state.RUNNING, state.STOPPED, state.ERROR, state.FATAL],
     STOPPED: [state.INIT, state.RUNNING, state.STOPPED, state.ERROR, state.FATAL],
     ERROR: [state.INIT, state.RUNNING, state.STOPPED, state.ERROR, state.FATAL],
-    FATAL: [state.FATAL]
+    FATAL: [state.FATAL],
   }
   /**
    * Set application state to new state and loging it,
    * if state has changed.
-   * @param String newAppState
+   * @param {string} newAppState
    */
-  function changeAppState (newAppState) {
+  function changeAppState(newAppState) {
     if (state[newAppState]) {
       if (stateMachine[appState].includes(newAppState)) {
         // valid state changes
@@ -55,50 +55,50 @@ module.exports = (cb) => {
   }
 
   // changing appState
-  function init () {
+  function init() {
     changeAppState(state.INIT)
   }
-  function running () {
+  function running() {
     changeAppState(state.RUNNING)
   }
-  function error () {
+  function error() {
     changeAppState(state.ERROR)
   }
-  function stopped () {
+  function stopped() {
     changeAppState(state.STOPPED)
   }
-  function fatal () {
+  function fatal() {
     changeAppState(state.FATAL)
   }
-  function isInit () {
+  function isInit() {
     return appState === state.INIT
   }
-  function isRunning () {
+  function isRunning() {
     return appState === state.RUNNING
   }
-  function isError () {
+  function isError() {
     return appState === state.ERROR
   }
-  function isStopped () {
+  function isStopped() {
     return appState === state.STOPPED
   }
-  function isFatal () {
+  function isFatal() {
     return appState === state.FATAL
   }
 
-  function getStateMachine () {
+  function getStateMachine() {
     return stateMachine
   }
 
-  function get () {
+  function get() {
     return appState
   }
 
-  function list () {
+  function list() {
     return state
   }
 
-  function reset () {
+  function reset() {
     appState = state.INIT
   }
 
@@ -116,6 +116,6 @@ module.exports = (cb) => {
     isError,
     isStopped,
     isFatal,
-    reset
+    reset,
   }
 }

@@ -6,7 +6,7 @@
   "scripts": {
     "test": "NODE_ENV=test DEBUG=appState mocha --exit ./appState.spec.js",
     "security": "snyk test",
-    "format": "standard appState.*",
+    "format": "prettier --write ./appState*.ts ./appState*.js",
     "coverage": "nyc --reporter=lcov npm test",
     "preversion": "npm run format && npm run security && npm test",
     "version": "",
@@ -15,11 +15,11 @@
   "devDependencies": {
     "mocha": "^6.1.4",
     "nyc": "^14.1.0",
+    "prettier": "^1.17.0",
     "should": "^13.2.3",
     "should-sinon": "0.0.6",
     "sinon": "^7.3.2",
-    "snyk": "^1.161.1",
-    "standard": "^11.0.1"
+    "snyk": "^1.161.1"
   },
   "repository": {
     "type": "git",

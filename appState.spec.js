@@ -37,7 +37,9 @@ describe('appState', () => {
   it('is logging', () => {
     sinon.spy(console, 'log')
     const logger = {
-      info (appState, newAppState) { console.log(`App state has changed from ${appState} to ${newAppState}`) }
+      info(appState, newAppState) {
+        console.log(`App state has changed from ${appState} to ${newAppState}`)
+      },
     }
     const appState = require('./appState')(logger.info)
     appState.reset()
@@ -112,7 +114,7 @@ describe('appState', () => {
       RUNNING: 'RUNNING',
       STOPPED: 'STOPPED',
       ERROR: 'ERROR',
-      FATAL: 'FATAL'
+      FATAL: 'FATAL',
     })
   })
 
@@ -126,7 +128,7 @@ describe('appState', () => {
       RUNNING: [state.INIT, state.RUNNING, state.STOPPED, state.ERROR, state.FATAL],
       STOPPED: [state.INIT, state.RUNNING, state.STOPPED, state.ERROR, state.FATAL],
       ERROR: [state.INIT, state.RUNNING, state.STOPPED, state.ERROR, state.FATAL],
-      FATAL: [state.FATAL]
+      FATAL: [state.FATAL],
     })
   })
 
