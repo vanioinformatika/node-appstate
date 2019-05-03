@@ -4,44 +4,46 @@ declare interface StateHandler {
 declare function appState(stateHandler: StateHandler): appState.AppStateInstance
 
 declare namespace appState {
-  interface AppStateInstance {}
-  // Application is under initialization.
-  function init(): void
-  // Application is running.
-  function running(): void
-  // Application has stopped, restaring available.
-  function stopped(): void
-  // Application in error state, maybe it's recoverable.
-  function error(): void
-  // Application in error state, never to run again.
-  function fatal(): void
+  interface AppStateInstance {
+    // Application is under initialization.
+    init(): void
+    // Application is running.
+    running(): void
+    // Application has stopped, restaring available.
+    stopped(): void
+    // Application in error state, maybe it's recoverable.
+    error(): void
+    // Application in error state, never to run again.
+    fatal(): void
 
-  function isInit(): boolean
-  function isRunning(): boolean
-  function isStopped(): boolean
-  function isError(): boolean
-  function isFatal(): boolean
+    isInit(): boolean
+    isRunning(): boolean
+    isStopped(): boolean
+    isError(): boolean
+    isFatal(): boolean
 
-  /**
-   * Return state machine object.
-   */
-  function getStateMachine(): Object
+    /**
+     * Return state machine object.
+     */
+    getStateMachine(): Object
 
-  /**
-   * Reading application state as string.
-   */
-  function get(): string
+    /**
+     * Reading application state as string.
+     */
+    get(): string
 
-  /**
-   * Return all application state value.
-   */
-  function list(): state
+    /**
+     * Return all application state value.
+     */
+    list(): state
 
-  /**
-   * Same as AppState.init()
-   * @deprecated use init().
-   */
-  function reset(): void
+    /**
+     * Same as AppState.init()
+     * @deprecated use init().
+     */
+    reset(): void
+
+  }
 
   /**
    * Application state values.
