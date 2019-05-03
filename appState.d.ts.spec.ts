@@ -1,12 +1,13 @@
 import * as AppState from '.'
+import { AppStateInstance } from '.'
 
 // init application state handler with logging
-AppState(
+export const appStateInstance: AppStateInstance = AppState(
   (appState: string, newAppState: string): void => {
     if (AppState.isError() || AppState.isFatal()) {
-      console.error({ details: `${appState} to ${newAppState}` }, 'appstate')
+      console.error(`appstate ${appState} to ${newAppState}`)
     } else {
-      console.warn({ details: `${appState} to ${newAppState}` }, 'appstate')
+      console.warn(`appstate ${appState} to ${newAppState}`)
     }
   },
 )

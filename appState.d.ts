@@ -1,9 +1,10 @@
 declare interface StateHandler {
   (appState: string, newAppState: string): void
-} 
-declare function appState(stateHandler: StateHandler): void
+}
+declare function appState(stateHandler: StateHandler): appState.AppStateInstance
 
 declare namespace appState {
+  interface AppStateInstance {}
   // Application is under initialization.
   function init(): void
   // Application is running.
