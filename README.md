@@ -147,10 +147,13 @@ export const init = (logger: Pino.Logger): AppStateInstance => {
 2. Import to, and using in index.ts:
 
 ```javascript
+import { AppStateInstance } from '@vanioinformatika/appstate'
 import * as appState from './appstate'
+
 // initialized with logger
 const appStateInstance: AppStateInstance = appState.init(logger)
-// ... and later you can use it anywhere:
+
+// ... and later you can use it anywhere
 process.on(
   'uncaughtException',
   (err): void => {
