@@ -1,3 +1,5 @@
+# The project is deprecated and not maintained.
+
 # node-appstate
 
 [![TravisCI Build Status](https://travis-ci.org/vanioinformatika/node-appstate.svg?branch=master)](https://travis-ci.org/vanioinformatika/node-appstate)
